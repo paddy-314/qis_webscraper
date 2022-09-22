@@ -37,9 +37,9 @@ log_path = os.path.join(storage_path, "logs")
 
 # proxy settings
 if USE_PROXY:
-    os.environ['HTTP_PROXY'] = os.environ['http_proxy'] = 'http://HE112113.emea1.cds.t-internal.com:8080/'
-    os.environ['HTTPS_PROXY'] = os.environ['https_proxy'] = 'http://HE112113.emea1.cds.t-internal.com:8080/'
-    os.environ['NO_PROXY'] = os.environ['no_proxy'] = '127.0.0.1,localhost,.local'
+    os.environ['HTTP_PROXY'] = os.environ['http_proxy'] = ''
+    os.environ['HTTPS_PROXY'] = os.environ['https_proxy'] = ''
+    os.environ['NO_PROXY'] = os.environ['no_proxy'] = ''
 
 def log_setup():
     create(log_path, "dir")
