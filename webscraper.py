@@ -116,8 +116,12 @@ BASEURL = "https://qisserver.htwk-leipzig.de/qisserver/rds"
 session = requests.Session()
 
 # post the payload to the site to log in and extract the asi parameter for all future requests
-r = session.post(f'{BASEURL}?state=user&type=1&category=auth.login&startpage=portal.vm&topitem=functions&breadCrumbSource=portal', data=data)
-logger.debug(f"login process took {r.elapsed.total_seconds()} seconds")
+try:
+    r = session.post(f'{BASEURL}?state=user&type=1&category=auth.login&startpage=portal.vm&topitem=functions&breadCrumbSource=portal', data=data)
+    logger.debug(f"login process took {r.elapsed.total_seconds()} seconds")
+except requests.exceptions.RequestException as e:
+    logger.error(f"unable to login {e}")
+    raise SystemExit(e)
 asi = searchforhref(r.text, "asi")
 
 # save params to file to make future requests more efficient 
