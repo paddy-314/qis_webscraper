@@ -1,4 +1,4 @@
-# QIS Webs craper
+# QIS Web Scraper
 ### requirements
 ```
 pip install -r /path/to/requirements.txt
