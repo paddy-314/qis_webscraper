@@ -112,9 +112,6 @@ session = requests.Session()
 data = {'username': USERNAME, 'password': PASSWORD, 'submit':'Anmelden'}
 BASEURL = "https://qisserver.htwk-leipzig.de/qisserver/rds"
 
-# Start the session
-session = requests.Session()
-
 # post the payload to the site to log in and extract the asi parameter for all future requests
 try:
     r = session.post(f'{BASEURL}?state=user&type=1&category=auth.login&startpage=portal.vm&topitem=functions&breadCrumbSource=portal', data=data)
