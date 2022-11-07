@@ -78,7 +78,7 @@ def send_email(user, pwd, recipient, subject, body):
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(user, pwd)
-        server.sendmail(FROM, TO, message)
+        server.sendmail(FROM, TO, message.encode('utf-8'))
         server.close()
         logger.info('successfully sent the mail')
     except (smtplib.SMTPException, socket.error) as e:
