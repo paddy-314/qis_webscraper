@@ -154,6 +154,10 @@ for exam in exams:
     grade = re.search("[^\t\n\r\s]+", exam.find_all('td' , class_= 'grade')[-1].text)[0] # select last element because class is used muliple times. remove control characters
     parsedExams[examname if examname not in parsedExams else f"{examname} - {publishDate[0]}"] = grade
 
+if not parsedExams:
+    logger.error(f"blank page detected")
+    raise SystemExit("blank page return")
+    
 # read saved grades and compare
 if not create(grades_path, "file"):
     with open(grades_path, 'r', encoding='utf-8') as f:
