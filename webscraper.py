@@ -155,7 +155,7 @@ for exam in exams:
     parsedExams[examname if examname not in parsedExams else f"{examname} - {publishDate[0]}"] = grade
 
 if not parsedExams:
-    logger.error(f"blank page detected")
+    logger.error(f"blank page detected {parsedExams}")
     raise SystemExit("blank page return")
     
 # read saved grades and compare
